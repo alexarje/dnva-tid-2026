@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tid, rytme, stillhet og stillstand · Symposium om tid, DNVA, 16. november 2026</title>
+<link rel="stylesheet" href="lib/reveal/reset.css">
+<link rel="stylesheet" href="lib/reveal/reveal.css">
+<link rel="stylesheet" href="lib/reveal/theme/white.css" id="theme">
+<style>
+  :root {
+    --r-main-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --r-heading-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --r-heading-text-transform: none;
+    --r-heading-font-weight: 700;
+    --r-heading1-size: 2.4em;
+    --r-heading2-size: 1.7em;
+    --r-heading3-size: 1.2em;
+    --r-main-font-size: 50px;
+    --r-link-color: #5a4fcf; --r-main-color: #363644; --r-heading-color: #363644;
+    --accent: #5a4fcf; --good: #2f855a; --bad: #c53030; --muted: #718096;
+    --mm-purple: #A7A1F4; --mm-green: #C1F7AE; --mm-dark: #363644;
+  }
+  .reveal h1, .reveal h2, .reveal h3 { letter-spacing: -0.01em; margin-bottom: 0.4em; }
+  .reveal .slides section { text-align: left; }
+  .reveal .slides section.center-slide { text-align: center; }
+  .reveal p, .reveal li { line-height: 1.35; }
+  .reveal ul { margin-left: 0.6em; }
+  .reveal li { margin: 0.25em 0; }
+  .reveal img, .reveal svg { max-height: 62vh; box-shadow: none; border: none; background: none; }
+  .reveal img.shot { border: 1px solid #cbd5e0; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+  .reveal img.photo { border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+  .reveal .fig { display: block; width: 100%; max-height: 72vh; margin: 0 auto; }
+  .reveal .tall { max-height: 78vh; }
+  .kicker { color: var(--muted); font-size: 0.6em; text-transform: uppercase; letter-spacing: .12em; margin-bottom: .2em; }
+  .big { font-size: 1.5em; font-weight: 700; line-height: 1.2; }
+  .huge { font-size: 3.2em; font-weight: 700; line-height: 1.1; }
+  .good { color: var(--good); } .bad { color: var(--bad); } .accent { color: var(--accent); } .muted { color: var(--muted); }
+  .purple { color: #5a4fcf; } .green { color: #2f855a; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; align-items: center; }
+  .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1em; align-items: start; }
+  .cols.top { align-items: start; }
+  .card { border: 2px solid #e2e8f0; border-radius: 12px; padding: .5em .7em; font-size: .7em; height: 100%; box-sizing: border-box; }
+  .card h3 { font-size: 1.15em; margin: 0 0 .3em 0; }
+  .card-ill { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; margin-top: .3em; }
+  .layers { position: relative; margin: 0 auto; }
+  .reveal .layers img { display: block; width: 100%; height: auto; max-height: none; margin: 0; }
+  .reveal .layers img + img { position: absolute; left: 0; top: 0; }
+  .card.purple { border-color: var(--mm-purple); } .card.green { border-color: #8fd67a; }
+  .caption { font-size: .55em; color: var(--muted); margin-top: .3em; }
+  .reveal a { text-decoration: underline; text-decoration-color: rgba(43,108,176,.4); text-underline-offset: 3px; }
+  .quote { font-size: 1.05em; font-style: italic; border-left: 6px solid var(--mm-purple); padding-left: .6em; margin: .4em 0; }
+  .reveal .footer { position: fixed; bottom: 14px; left: 22px; font-size: 14px; color: #a0aec0; z-index: 10; }
+  .reveal .progress { color: var(--accent); }
+
+  /* Map of the talk */
+  .map { display: grid; grid-template-columns: repeat(6, 1fr); gap: .35em; font-size: .5em; width: 100%; }
+  .map div { border: 2px solid #e2e8f0; border-radius: 8px; padding: .5em .3em; text-align: center; min-height: 3em; display: flex; align-items: center; justify-content: center; }
+  .map .h { background: #f0eefc; border-color: var(--mm-purple); font-weight: 700; }
+  .map .mm { background: #eefbe8; border-color: #8fd67a; font-weight: 700; }
+
+  /* Headline collage */
+  .collage { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5em; align-items: center; }
+  .collage img { max-height: 34vh; width: 100%; object-fit: cover; object-position: top; border: 1px solid #cbd5e0; border-radius: 6px; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+  .collage img:nth-child(odd) { transform: rotate(-2deg); }
+  .collage img:nth-child(even) { transform: rotate(1.5deg); }
+
+  /* Photo grids */
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6em; }
+  .grid3 figure { margin: 0; text-align: center; }
+  .grid3 img { width: 100%; height: 30vh; object-fit: cover; border-radius: 8px; }
+  .grid3 figcaption { font-size: .5em; color: var(--muted); margin-top: .2em; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: .8em; }
+  .grid2 figure { margin: 0; text-align: center; }
+  .grid2 img { width: 100%; height: 60vh; object-fit: cover; border-radius: 10px; }
+  .grid2 figcaption { font-size: .5em; color: var(--muted); margin-top: .3em; }
+
+  /* Embedded apps and videos */
+  .appwrap { width: 1800px; height: 880px; overflow: hidden; margin: 0 auto; border: 2px solid #e2e8f0; border-radius: 12px; }
+  .appwrap iframe { width: 1200px; height: 587px; transform: scale(1.5); transform-origin: 0 0; border: 0; }
+  .reveal pre.code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: .55em; line-height: 1.4; background: #f7fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: .8em 1em; margin: 0; text-align: left; white-space: pre; box-shadow: none; width: auto; }
+  .reveal table.cmp { font-size: .7em; border-collapse: collapse; margin: 0; width: 100%; text-align: left; }
+  .reveal table.cmp th, .reveal table.cmp td { padding: .3em .8em; border-bottom: 2px solid #e2e8f0; }
+  .reveal table.cmp th { font-weight: 700; }
+  .reveal .strip { font-size: 3.2em; font-weight: 700; margin: 0; line-height: 1.1; }
+  .netwrap { width: 1800px; height: 880px; overflow: hidden; margin: 0 auto; border: 2px solid #e2e8f0; border-radius: 12px; }
+  .reveal .netwrap iframe { width: 1800px; max-width: none; height: 1500px; max-height: none; margin-top: -560px; border: 0; }
+  .video { width: 1600px; height: 900px; border: 0; margin: 0 auto; display: block; border-radius: 12px; background: #000; }
+
+  /* Word slides */
+  .words { display: flex; gap: .4em; align-items: baseline; flex-wrap: wrap; }
+  .words .w { font-size: 1.9em; font-weight: 700; }
+  .multi { font-size: 2.2em; font-weight: 700; line-height: 1.15; }
+  .multi span { display: block; padding-left: 1.6em; }
+  .multi .pre { padding-left: 0; color: var(--muted); }
+  .sectors { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1em; margin-top: 1em; align-items: start; text-align: center; font-size: .55em; }
+  .sectors svg { display: block; width: 55%; height: auto; aspect-ratio: 1; margin: 0 auto .4em; }
+  .sentence { font-size: 1.35em; line-height: 1.5; font-weight: 500; }
+  .sentence .stack { display: inline-flex; flex-direction: column; vertical-align: middle; line-height: 1.05; margin: 0 .25em; }
+  .sentence .stack span.purple, .sentence .stack span.green { font-weight: 700; }
+  .vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: .3em .6em; align-items: center; font-size: .95em; margin: .25em 0; }
+  .vs .l { text-align: right; color: #5a4fcf; font-weight: 700; } .vs .r { text-align: left; color: #2f855a; font-weight: 700; } .vs .m { color: var(--muted); font-size: .6em; }
+  .nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; text-align: center; }
+  .nums div { border-radius: 14px; padding: .5em .3em; background: #f0eefc; }
+  .nums div:nth-child(even) { background: #eefbe8; }
+  .nums b { display: block; font-size: 2.2em; line-height: 1.1; }
+  .nums span { font-size: .6em; color: #4a5568; }
+  .nums span span { font-size: 1em; }   /* tall inne i teksten arver ikke en gang til */
+  .wish { font-size: 1.05em; margin: .45em 0; display: flex; gap: .5em; align-items: baseline; }
+  .wish b { color: #5a4fcf; font-size: 1.4em; min-width: 1.2em; }
+  .qmark { font-size: 14em; font-weight: 700; line-height: 1; color: var(--mm-purple); }
+  .qmark i { font-style: normal; color: #8fd67a; }
+  .overlay { background: rgba(255,255,255,.82); display: inline-block; padding: .3em .7em; border-radius: 12px; }
+
+
+  /* Deck additions */
+  .reveal img.fig { width: auto; max-width: 100%; object-fit: contain; }
+  .roles { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1em; align-items: center; text-align: center; }
+  .roles .r p { font-size: 1.1em; font-weight: 700; margin: 1.2em 0; }
+  .reveal .overlay { position: absolute; left: 0; bottom: 0; text-align: left; }
+  .reveal .overlay .kicker { margin-bottom: .1em; }
+  html.dark .reveal img.fig.keep, html.dark .reveal .layers img.keep { filter: none; }
+  html.dark .reveal img.panel { background: #fff; border-radius: 14px; padding: 12px; box-sizing: border-box; }   /* bokens figur med hvit bakgrunn */
+  /* Atlaset: tolv runde bilder, pek for lyd og tall */
+  .atlas { display: grid; grid-template-columns: repeat(6, 1fr); gap: .5em 1em; width: 1700px; max-width: 100%; margin: 0 auto; }
+  .atlas figure { margin: 0; cursor: pointer; }
+  .reveal .atlas img { width: 240px; height: 240px; border-radius: 50%; margin: 0; display: block; margin: 0 auto; transition: transform .2s; }
+  .atlas figure.on img { transform: scale(1.12); box-shadow: 0 0 0 8px var(--accent, #A7A1F4); }
+  .atlas figcaption { font-size: .55em; margin-top: .25em; }
+  .reveal .atlas-facts { font-size: .62em; line-height: 1.35; min-height: 3.2em; margin: .6em auto 0; max-width: 1500px; color: #4a5568; }
+  html.dark .reveal .atlas-facts { color: #cbd5e0; }
+  .reveal .atlas-facts.on { color: inherit; }
+  /* Sluttlysbildet: emblemene nede i hjørnene, på hvite plater i begge moduser */
+  .reveal .corner-logo { position: absolute; bottom: 0; height: 120px; width: 120px; object-fit: contain; margin: 0; background: #fff; border-radius: 12px; padding: 10px; box-sizing: border-box; }
+  .reveal .corner-logo.rcn { right: 0; width: 300px; padding: 10px 16px; }
+  html.dark .reveal img.photo.keep { filter: none; }
+  #sound { position: fixed; right: 22px; bottom: 40px; z-index: 10; font-size: 16px; color: var(--accent); }
+  body.on-surface #sound { display: none; }
+  #depth { position: fixed; right: 22px; bottom: 14px; z-index: 10; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: #a0aec0; }
+  body.on-surface .footer, body.on-surface #depth { display: none; }
+  html.dark #depth { color: #4a5568; }
+  @media print { #depth { display: none; } }
+
+  /* ---- Dark mode ---- */
+  html.dark {
+    --r-background-color: #14171c;
+    --r-main-color: #e6e9ee;
+    --r-heading-color: #ffffff;
+    --r-link-color: #b8b3ff;
+    --muted: #a0aec0;
+    --accent: #b8b3ff; --good: #68d391; --bad: #fc8181;
+    color-scheme: dark;
+  }
+  html.dark body, html.dark .reveal-viewport { background: #14171c; }
+  html.dark .reveal .card, html.dark .map div, html.dark .appwrap, html.dark .netwrap, html.dark .reveal table.cmp th, html.dark .reveal table.cmp td { border-color: #2d3748; }
+  html.dark .reveal pre.code { background: #1a202c; border-color: #2d3748; }
+  html.dark .reveal .card.purple { border-color: var(--mm-purple); } html.dark .reveal .card.green { border-color: #8fd67a; }
+  html.dark .map .h { background: #26243a; } html.dark .map .mm { background: #1f2e1c; }
+  html.dark .nums div { background: #26243a; } html.dark .nums div:nth-child(even) { background: #1f2e1c; } html.dark .nums span { color: #cbd5e0; }
+  html.dark .purple { color: #b8b3ff; } html.dark .green { color: #9ae6b4; } html.dark .vs .l { color: #b8b3ff; } html.dark .vs .r { color: #9ae6b4; } html.dark .wish b { color: #b8b3ff; }
+  html.dark .reveal img.shot, html.dark .collage img { border-color: #2d3748; box-shadow: 0 6px 18px rgba(0,0,0,.5); }
+  html.dark .reveal img.fig, html.dark .reveal .layers img { filter: invert(0.93) hue-rotate(180deg); }
+  /* inline SVGs adapt via currentColor; these two fills swap with the theme */
+  .reveal svg .paper { fill: #fff; } .reveal svg .panel { fill: #f7f7fb; }
+  html.dark .reveal svg .paper { fill: #1a1d24; } html.dark .reveal svg .panel { fill: #262b36; }
+  html.dark .overlay { background: rgba(20,23,28,.8); }
+  html.dark .reveal .footer { color: #4a5568; }
+  html.dark .reveal .progress, html.dark .reveal .controls { color: var(--accent); }
+  html.dark .reveal .slide-number { background: transparent; color: #718096; }
+  #theme-toggle {
+    position: fixed; top: 14px; right: 18px; z-index: 50;
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid #cbd5e0;
+    background: rgba(255,255,255,.85); color: #4a5568; font-size: 20px; line-height: 1;
+    cursor: pointer; opacity: .35; transition: opacity .2s;
+  }
+  #theme-toggle:hover, #theme-toggle:focus { opacity: 1; }
+  html.dark #theme-toggle { background: rgba(20,23,28,.85); border-color: #4a5568; color: #e2e8f0; }
+  @media print { #theme-toggle { display: none; } }
+  /* Dette dekket */
+  .reveal .layers { width: 78%; }
+  .reveal .layers.wide { width: 92%; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; align-items: center; justify-items: center; }
+  .reveal .pair img { max-height: 66vh; width: auto; max-width: 100%; }
+  .reveal img.round { border-radius: 50%; width: 560px; max-width: 100%; height: auto; }
+  .reveal img.full { max-height: 70vh; width: auto; max-width: 100%; display: block; margin: 0 auto; }
+  .quoteover { font-size: 2.2em; font-weight: 700; line-height: 1.15; }
+  .reveal .overlay p.line { font-size: .8em; }
+  .clocks p { font-size: 1.5em; font-weight: 700; margin: .35em 0; }
+  .clocks p span { display: block; font-size: .55em; font-weight: 400; }
+  /* Animasjoner av stillstandsdata (lib/standstill.js) */
+  .reveal canvas { display: block; margin: 0 auto; max-width: 100%; }
+</style>
+</head>
+<body>
+<script>
+  // Tema før første opptegning; valget huskes i nettleseren.
+  (function () {
+    var saved = null; try { saved = localStorage.getItem('tid-nva-theme'); } catch (e) {}
+    var q = location.search;
+    var dark = /[?&]dark\b/.test(q) ? true : /[?&]light\b/.test(q) ? false : saved ? saved === 'dark' : true;   // mørk er standard: salen i Akademiet er mørk
+    if (dark) document.documentElement.classList.add('dark');
+  })();
+</script>
+<button id="theme-toggle" type="button" title="Lys/mørk (tast d)" aria-label="Bytt mellom lys og mørk modus">◐</button>
+<div class="reveal">
+<div class="slides">
+
+<!-- ===================== 0 TITTEL ===================== -->
+<section>
+  <section data-background-image="images/tittel.jpg" data-background-size="cover" data-background-position="center">
+    <div class="overlay" style="max-width:94%;top:272px;bottom:auto">
+      <h1 style="margin:0;font-size:1.9em;white-space:nowrap">Tid, rytme, stillhet og stillstand</h1>
+      <p class="big fragment" style="font-size:1.1em;margin:.2em 0 0">Hvor lenge er 10 minutter?</p>
+    </div>
+    <div class="overlay" style="max-width:86%;top:900px;bottom:auto">
+      <p style="font-size:.7em;margin:0">Alexander Refsum Jensenius · Institutt for musikkvitenskap, Universitetet i Oslo</p>
+      <p class="kicker" style="margin:.2em 0 0">Det Norske Videnskaps-Akademi · Symposium om tid · 16. november 2026</p>
+    </div>
+    <aside class="notes">Rundt 25 minutter, så ti minutter til spørsmål. Tittelen er den som står i programmet. Bakgrunnen er bildet av de lysende båndene. Spørsmålet i undertittelen er hele innlegget: hvor lenge er ti minutter? For klokken er svaret enkelt. For kroppen er det overraskende enkelt. For den som står der, er det ikke enkelt i det hele tatt.</aside>
+  </section>
+  <section>
+    <div class="layers" style="width:1700px">
+      <img class="fig keep" src="images/fig-kunstvit-0.svg" data-dark="images/fig-kunstvit-dark-0.svg" alt="">
+      <img class="fig keep fragment" src="images/fig-kunstvit-1.svg" data-dark="images/fig-kunstvit-dark-1.svg" alt="Kunst">
+      <img class="fig keep fragment" src="images/fig-kunstvit-5.svg" data-dark="images/fig-kunstvit-dark-5.svg" alt="Vitenskap">
+      <img class="fig keep fragment" src="images/fig-kunstvit-6.svg" data-dark="images/fig-kunstvit-dark-6.svg" alt="Fenomenologi">
+      <img class="fig keep fragment" src="images/fig-kunstvit-7.svg" data-dark="images/fig-kunstvit-dark-7.svg" alt="Psykologi">
+      <img class="fig keep fragment" src="images/fig-kunstvit-8.svg" data-dark="images/fig-kunstvit-dark-8.svg" alt="Teknologi">
+      <img class="fig keep fragment" src="images/fig-kunstvit-ytre.svg" data-dark="images/fig-kunstvit-dark-ytre.svg" alt="Fysiologi, kinesiologi og fysikk, i en bue til høyre for de tre">
+      <img class="fig keep fragment" src="images/fig-kunstvit-2.svg" data-dark="images/fig-kunstvit-dark-2.svg" alt="Musikk">
+      <img class="fig keep fragment" src="images/fig-kunstvit-3.svg" data-dark="images/fig-kunstvit-dark-3.svg" alt="Performance">
+      <img class="fig keep fragment" src="images/fig-kunstvit-4.svg" data-dark="images/fig-kunstvit-dark-4.svg" alt="Installasjon">
+      <img class="fig keep fragment" src="images/fig-kunstvit-ytre-kunst.svg" data-dark="images/fig-kunstvit-dark-ytre-kunst.svg" alt="Foto, video og dans, til venstre for de tre">
+      <img class="fig keep" src="images/fig-kunstvit-me.svg" data-dark="images/fig-kunstvit-dark-me.svg" alt="Portrett av Alexander mellom kunst og vitenskap">
+    </div>
+    <aside class="notes">Kort om hvordan jeg arbeider: mellom kunst og vitenskap. (Klikk.) Kunst på den ene siden, (klikk) vitenskap på den andre. I vitenskapen (klikk for hver) tre innganger: fenomenologi, førstepersonserfaringen; psykologi, det vi kan teste hos mange; og teknologi, verktøyene for å måle og lage. (Klikk.) Bak dem ligger tre fag til, som jeg holder fra de andre: fysiologi, kroppens egne prosesser; kinesiologi, læren om kroppens bevegelse; og fysikk, det som faktisk beveger seg og svinger. I kunsten (klikk for hver): musikk, performance og installasjon; jeg lager og fremfører musikk og bygger installasjoner selv. (Klikk.) Så kom foto, video og dans til: året med stillstand er også en serie bilder og opptak, og mye av arbeidet er gjort sammen med dansere. Ingen av dem rekker alene. Tilnærmingen min er å bygge bro mellom alt sammen, mellom fagene og mellom kunsten og vitenskapen. Jeg står i overlappet, og det gjør stillstanden også: den begynte som kunstprosjekt og ble en måleserie, og innlegget veksler mellom målinger og egne erfaringer.</aside>
+  </section>
+  <section>
+    <div class="layers" style="width:1760px">
+      <img class="fig keep" src="images/fig-tidslinje-0.svg" data-dark="images/fig-tidslinje-dark-0.svg" alt="Tidslinje med opptakene av stillstand: Sverm-økter, NM i stillstand og året med ti minutter hver dag">
+      <img class="fig keep fragment" src="images/fig-tidslinje-1.svg" data-dark="images/fig-tidslinje-dark-1.svg" alt="Sverm: kunstnerisk forskning og utviklingsarbeid, fra første økt og frem til i dag">
+      <img class="fig keep fragment" src="images/fig-tidslinje-2.svg" data-dark="images/fig-tidslinje-dark-2.svg" alt="MICRO: vitenskaping om mennesker, med pil fra Sverm">
+      <img class="fig keep fragment" src="images/fig-tidslinje-3.svg" data-dark="images/fig-tidslinje-dark-3.svg" alt="AMBIENT: vitenskaping om omgivelser, med pil fra MICRO">
+      <img class="fig keep fragment" src="images/fig-tidslinje-4.svg" data-dark="images/fig-tidslinje-dark-4.svg" alt="RITMO: senter for rytme, tid og bevegelse">
+      <img class="fig keep fragment" src="images/fig-tidslinje-5.svg" data-dark="images/fig-tidslinje-dark-5.svg" alt="MishMash: senter for KI og kreativitet">
+      <img class="fig keep fragment" src="images/fig-tidslinje-6.svg" data-dark="images/fig-tidslinje-dark-6.svg" alt="fourMs-laben, fra starten og videre, og streken for i dag">
+    </div>
+    <aside class="notes">Nederst ligger opptakene: Sverm-øktene, mesterskapene i stillstand og året der jeg sto stille hver dag. (Klikk.) Det begynte som kunstnerisk forskning og utviklingsarbeid i Sverm, der vi sto stille sammen og skrev ned hva vi merket, og det arbeidet pågår fortsatt. (Klikk.) I MICRO ble det vitenskaping om mennesker, med mesterskapene og laboratoriestudiene. (Klikk.) I AMBIENT ble det vitenskaping om omgivelser: vi snudde spørsmålet og så på hva omgivelsene, lyden og rommet gjør med en kropp som står stille, og det er året med 365 dager. (Klikk.) De to sentrene rommer begge sider: RITMO for rytme, tid og bevegelse, der tiden og kroppens klokker hører hjemme, (klikk) og MishMash for kunstig intelligens og kreativitet, dit metodene går videre, og der boken og disse lysbildene ble laget sammen med en agent. (Klikk.) Og under alt sammen ligger fourMs-laben, der alt er målt, fra laben ble til og videre forbi i dag, snart som HumanLab. Lilla er kunst, grønt er vitenskap, og sentrene går fra det ene til det andre.</aside>
+  </section>
+</section>
+
+<!-- ===================== 1 STILLSTAND ===================== -->
+<section>
+  <section class="center-slide">
+    <h1>Stillstand</h1>
+    <aside class="notes">Tittelen baklengs: først stillstanden, det jeg faktisk gjør. Hva den er, hvordan den måles, og hva som skjer når man gjør den hver dag i et år.</aside>
+  </section>
+  <section class="center-slide">
+    <p class="big">Reis deg.</p>
+    <p class="big fragment">Lukk øynene.</p>
+    <p class="big fragment">Sett deg når du tror at ett minutt har gått.</p>
+    <aside class="notes">Jeg ber salen reise seg, lukke øynene, og sette seg når de tror at ett minutt har gått. Jeg tar tiden på telefonen og sier ingenting underveis. Når alle sitter, sier jeg hvor lang tid som faktisk gikk, og ber dem legge merke til spredningen: noen satte seg tidlig, noen ble stående lenge. Det er hele innlegget i miniatyr. Klokken gikk like fort for alle, og kroppene sto omtrent like stille, men minuttet var ikke like langt.</aside>
+  </section>
+  <section class="center-slide">
+    <p class="big">Hvor mye tror du at hodet ditt beveget seg?</p>
+    <p class="big fragment">I mm/s?</p>
+    <aside class="notes">Mens salen setter seg: et spørsmål til. Hvor mye tror dere at hodet beveget seg mens dere sto der? (Klikk.) Og i millimeter i sekundet? Jeg lar dem gjette høyt et øyeblikk og sier ikke svaret; det kommer på neste lysbilde.</aside>
+  </section>
+  <section class="center-slide">
+    <div class="pair">
+      <canvas data-anim="trace" data-speed="20" width="820" height="820" aria-label="Hodets bane sett ovenfra, tegnet etter hvert"></canvas>
+      <div>
+        <p class="huge accent fragment"><span data-n="grand"></span></p>
+        <p class="big fragment">mm/s</p>
+      </div>
+    </div>
+    <aside class="notes">Dette er tallet alt dreier seg om. Når et voksent menneske står så stille det kan, beveger hodet seg med en median på <span data-n="grand"></span> millimeter i sekundet, målt med en refleksmarkør på hodet og filtrert til mellom 0,2 og 5 hertz, der kroppens svai ligger. Over seks NM i stillstand og <span data-n="n38"></span> deltakere ligger medianen per mesterskap mellom <span data-n="band_lo"></span> og <span data-n="band_hi"></span>. Tallet er så stabilt at resten av forskningen i stor grad har handlet om hva som ikke klarer å forstyrre det. Banen som tegner seg, er hodet til én deltaker i NM <span data-n="head_year"></span>, sett ovenfra og 20 ganger raskere enn virkelig tid, med <span data-n="head_qom"></span> millimeter i sekundet, altså nær medianen; streken nede til venstre er én centimeter. Tast L, så høres banen: tonehøyden er hodets posisjon framover og bakover, panoreringen side til side, styrken farten.</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <div class="layers" style="width:1500px">
+      <img src="images/fig-mesterskap-a.png" alt="Tom akse: hodets fart i millimeter per sekund, mesterskapene fra 2012 til 2022">
+      <img class="fragment" src="images/fig-mesterskap-1.png" alt="">
+      <img class="fragment" src="images/fig-mesterskap-2.png" alt="">
+      <img class="fragment" src="images/fig-mesterskap-3.png" alt="">
+      <img class="fragment" src="images/fig-mesterskap-4.png" alt="">
+      <img class="fragment" src="images/fig-mesterskap-5.png" alt="">
+      <img class="fragment" src="images/fig-mesterskap.png" alt="Søylediagram av hodets fart per mesterskap fra 2012 til 2022, med antall deltakere under hvert år">
+    </div>
+    <p class="kicker" style="margin:.8em 0 0">Kilde: NM i stillstand</p>
+    <aside class="notes">Det samme tallet i ti år. Først aksene: hodets fart, mesterskap for mesterskap. (Klikk for hvert mesterskap, seks klikk.) Medianen per mesterskap fra 2012 til 2022, to ulike motion capture-systemer og flere hundre mennesker som aldri hadde gjort dette før. Testet som likhet og ikke bare som mangel på forskjell, ligger <span data-n="n38_equiv"></span> av <span data-n="n38_ed"></span> mesterskap innenfor <span data-n="bound38"></span> prosent av hverandre; unntaket er <span data-n="fail38"></span>, som ligger <span data-n="fail38_pct"></span> prosent høyere. Ti år med ulike mennesker, ulikt utstyr og ulik musikk, og nesten samme tall.</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <div class="grid2">
+      <figure><img src="images/nm-stillstand-1.jpg" alt="Deltakere står stille på rekke i laben under et NM i stillstand, hver ved sitt ark på gulvet"></figure>
+      <figure><img src="images/nm-stillstand-2.jpg" alt="Deltakere står stille i laben mens en fotograf filmer"></figure>
+    </div>
+    <p class="kicker" style="margin:.8em 0 0">NM i stillstand</p>
+    <aside class="notes">Slik ser et NM i stillstand ut. En gruppe om gangen står på gulvet i laben, hver på sin plass, med en refleksmarkør på hodet, mens kameraene rundt følger markørene.</aside>
+  </section>
+  <section class="center-slide" data-depth="deeper">
+    <div class="pair">
+      <canvas data-anim="range" data-speed="20" width="820" height="820" aria-label="Hodets bane sett ovenfra, ufiltrert, med en stiplet sirkel som viser spredningsradien"></canvas>
+      <div>
+        <p class="huge accent"><span data-n="disp_cm"></span> cm</p>
+      </div>
+    </div>
+    <aside class="notes">En fart sier ingenting om hvor stort område kroppen bruker. Tallet er spredningsradien: hvor langt hodet i snitt (kvadratisk middel) står fra sitt eget midtpunkt gjennom økten, en median på <span data-n="disp"></span> millimeter (rapport 04). Hodet holder seg altså innenfor en sirkel på halvannen centimeter i ti minutter, og den størrelsen er like stabil mellom mesterskapene som farten er. Stillstand har altså både en karakteristisk fart og en karakteristisk størrelse. Figuren: den stiplede sirkelen er medianens spredningsradius, og banen er hodet til den samme deltakeren som i sted, sett ovenfra, nå ufiltrert, så den langsomme driften er med; 20 ganger raskere enn virkelig tid, og streken nede er én centimeter. Akkurat denne deltakeren holder seg stort sett innenfor sirkelen og stikker så vidt utenfor foran og bak.</aside>
+  </section>
+  <section class="center-slide">
+    <canvas data-anim="accum" data-speed="20" width="1760" height="720" aria-label="Hodets bane til venstre og den tilbakelagte strekningen til høyre, som vokser nesten som en rett linje"></canvas>
+    <aside class="notes">Kroppen teller jevnt. Til venstre tegner hodet til den samme deltakeren banen sin, 20 ganger raskere enn virkelig tid. Til høyre vokser strekningen hodet har tilbakelagt: <span data-n="head_path_m"></span> meter på <span data-n="head_min"></span> minutter, nesten en rett linje. Det er det jevne tempoet som gjør at stillstand kan brukes som klokke. L gir den samme lyden som da banen ble tegnet første gang.</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <div class="layers" style="width:1500px">
+      <img src="images/fig-synker-a.png" alt="Tom akse: hodets høyde i millimeter mot minutter">
+      <img class="fragment" src="images/fig-synker-b.png" alt="Én tynn strek per deltaker i seks mesterskap: hodets høyde gjennom økten, spredt rundt null">
+      <img class="fragment" src="images/fig-synker.png" alt="Det samme med medianen som en tykk strek, som faller et par millimeter på fem minutter">
+    </div>
+    <p class="kicker" style="margin:.8em 0 0">Kilde: NM i stillstand</p>
+    <aside class="notes">Og så en ting til som skjer med alle. Aksene: hodets høyde gjennom økten, i millimeter, målt fra der hver enkelt begynte. (Klikk.) Én tynn strek per deltaker i seks mesterskap, flere hundre mennesker. Noen stiger, de fleste gjør ikke det. (Klikk.) Den tykke streken er medianen: vi synker litt. Over <span data-n="n94"></span> deltakere i <span data-n="sink_ds"></span> datasett synker hodet <span data-n="sink_slope"></span> millimeter i minuttet, og <span data-n="sink_pct"></span> prosent av deltakerne synker; for den midtre halvdelen blir det mellom <span data-n="sink_lo"></span> og <span data-n="sink_hi"></span> millimeter på en økt (rapport 94). Det er ikke kameraene som siger: referansemarkørene på stativene står så godt som stille, <span data-n="sink_static"></span> millimeter i minuttet. Kroppen gir etter, litt og jevnt, uten at vi merker det.</aside>
+  </section>
+  <section data-depth="deeper" data-background-image="images/sverm-trial.jpg" data-background-size="cover" data-background-position="center 30%">
+    <div class="overlay"><p class="kicker" style="margin:0">2011–2021</p><p style="margin:0">Sverm</p></div>
+    <aside class="notes">Sverm: det kunstneriske prosjektet der vi sto stille sammen, i ti minutter om gangen, gjennom ti år. Bildet er en publikumsstillstand under Sverm. Det neste lysbildet stiller Sverm ved siden av mesterskapene.</aside>
+  </section>
+  <section class="center-slide" data-depth="deeper">
+    <table class="cmp" style="max-width:1500px;margin:0 auto">
+      <tr><th></th><th>NM: mange, én gang</th><th>Sverm: <span data-n="rep_people"></span> personer, <span data-n="rep_sessions"></span> økter</th></tr>
+      <tr class="fragment"><td>Fart</td><td><span data-n="band_lo"></span>–<span data-n="band_hi"></span> mm/s</td><td><span data-n="rep_speed"></span> mm/s</td></tr>
+      <tr class="fragment"><td>Endring i fart</td><td><span data-n="rep_nm_rate_lo"></span> til <span data-n="rep_nm_rate_hi"></span> mm/s/min</td><td><span data-n="rep_rate"></span> mm/s/min</td></tr>
+      <tr class="fragment"><td>Synker</td><td><span data-n="rep_nm_sink_lo"></span> til <span data-n="rep_nm_sink_hi"></span> mm/min</td><td><span data-n="rep_sink"></span> mm/min</td></tr>
+      <tr class="fragment"><td>Andel som synker</td><td><span data-n="rep_nm_pct_lo"></span>–<span data-n="rep_nm_pct_hi"></span> %</td><td><span data-n="rep_sink_pct"></span> %</td></tr>
+    </table>
+        <aside class="notes">Alt jeg har vist til nå, er øyeblikksbilder: mange mennesker som står stille én gang. Holder det også når de samme menneskene gjør det om igjen? I Sverm sto vi tre stille sammen i <span data-n="rep_sessions"></span> økter over ti år. (Klikk for hver rad.) Farten: medianen i mesterskapene ligger mellom <span data-n="band_lo"></span> og <span data-n="band_hi"></span> millimeter i sekundet, og Sverm på <span data-n="rep_speed"></span> over <span data-n="rep_speed_n"></span> personøkter, innenfor det samme båndet. Farten endrer seg nesten ikke gjennom økten, verken der eller her. Hodet synker i begge: <span data-n="rep_sink"></span> millimeter i minuttet i Sverm, og <span data-n="rep_sink_pct"></span> prosent av de <span data-n="rep_sink_n"></span> opptakene synker, mot <span data-n="rep_nm_pct_lo"></span> til <span data-n="rep_nm_pct_hi"></span> prosent i mesterskapene. Referansemarkørene på stativ synker ikke (<span data-n="sink_static"></span> millimeter i minuttet), så det er kroppen og ikke kameraene. Det som gjelder for mange én gang, gjelder altså også for få mange ganger. Hvert tall er per mesterskap, laveste til høyeste (rapport 38, 94 og 96).</aside>
+  </section>
+  <section class="center-slide">
+    <div class="layers" style="width:1760px;margin-left:calc(50% - 880px)">
+      <img class="fragment keep" src="images/ss365-rutenett.png" alt="Et rutenett av 360-graders bilder av en stående person i ulike rom, rad for rad" style="clip-path:inset(0% 0 75% 0)">
+      <img class="fragment keep" src="images/ss365-rutenett.png" alt="" style="clip-path:inset(25% 0 50% 0)">
+      <img class="fragment keep" src="images/ss365-rutenett.png" alt="" style="clip-path:inset(50% 0 25% 0)">
+      <img class="fragment keep" src="images/ss365-rutenett.png" alt="" style="clip-path:inset(75% 0 0% 0)">
+    </div>
+    <aside class="notes">Ti minutter hver dag i et år. (Klikk for hver rad, fire klikk.) Hver dag i 2023 sto jeg stille i ti minutter, til sammen <span data-n="n_days"></span> dager, med en telefon på brystet, et 360-graders kamera og en ambisonisk mikrofon på stativ foran meg. På kontorer, i kirker, biblioteker, stasjoner, på en hytte og ute. <span data-n="grid_days"></span> av dagene er vist her. Flere hundre kropper på én dag i mesterskapene, og én kropp i 365 rom: det er to måter å stille det samme spørsmålet på.</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <canvas data-anim="year" data-speed="40" width="1800" height="640" aria-label="Bevegelsesmengden per dag gjennom 2023, ett punkt per dag, med medianen som en flat linje"></canvas>
+    <aside class="notes">Blir man bedre av å øve? Over <span data-n="trend_n"></span> dager med samme telefon er det ingen trend med dagen i året: r = <span data-n="trend"></span>, p = <span data-n="trend_p"></span>. Kroppen sto like stille i desember som i januar. Det som endret seg, var opplevelsen. Punktene kommer dag for dag: bevegelsesmengden fra telefonen på brystet, alle <span data-n="year_n"></span> dagene; streken er medianen. Tast L før dagene kommer, så spilles året som én tone per dag, lysere når jeg beveget meg mer enn medianen og mørkere når mindre: ingen melodi som stiger eller synker.</aside>
+  </section>
+  <section class="center-slide" data-depth="deeper">
+    <table class="cmp" style="max-width:1500px;margin:0 auto">
+      <tr><th colspan="2">Kroppen gjennom et år</th></tr>
+      <tr class="fragment"><td>Øving hjalp ikke</td><td>r = <span data-n="trend"></span></td></tr>
+      <tr class="fragment"><td>Endring fra dag til dag</td><td><span data-n="consec"></span> %</td></tr>
+      <tr class="fragment"><td>Samme svaieakse hver dag</td><td><span data-n="y33_sway_R"></span> av 1</td></tr>
+      <tr class="fragment"><td>Kjente min egen stillhet</td><td>r = <span data-n="y31_self"></span></td></tr>
+      <tr class="fragment"><td>Sammen med andre: som alene</td><td><span data-n="year_ratio"></span></td></tr>
+    </table>
+    <aside class="notes">Hva gjorde året med kroppen? Fem ting, én for hvert klikk. Øving hjalp ikke: over <span data-n="trend_n"></span> dager med samme telefon er det ingen trend, r = <span data-n="trend"></span>. Dagene er likevel ulike: medianendringen fra én dag til den neste er <span data-n="consec"></span> prosent, mer enn det meste vi har lett etter. Retningen er fast: jeg svaier langs den samme aksen dag etter dag, med en retningsfasthet på <span data-n="y33_sway_R"></span> av 1, uansett rom. Jeg visste hvordan det gikk: de dagene jeg rett etterpå syntes jeg hadde stått stille, hadde jeg det, r = <span data-n="y31_self"></span>. Og de <span data-n="co_days"></span> dagene jeg sto sammen med andre, skiller seg ikke fra de andre (forhold <span data-n="year_ratio"></span>). Kroppen er altså den samme gjennom året, i mengde og i retning, men ikke fra dag til dag. Lyden i rommene kommer i neste del, og pulsen under rytme (rapport 31, 33 og 106).</aside>
+  </section>
+</section>
+
+<!-- ===================== 2 STILLHET ===================== -->
+<section>
+  <section class="center-slide">
+    <h1>Stillhet</h1>
+    <aside class="notes">Så stillheten, som ikke finnes: lyden i de 365 rommene, det som alltid er der, og hva musikken legger til når den kommer. Ikke mye.</aside>
+  </section>
+  <section class="center-slide">
+    <div id="atlas" class="atlas"></div>
+    <p id="atlas-facts" class="atlas-facts">Pek på et rom</p>
+    <aside class="notes">Et atlas over året. Tolv av de 365 dagene, valgt for kontrast: de tre stilleste rommene, de tre høyeste, tre med størst svingninger og tre med en historie. Pek på et bilde, så spilles 15 sekunder fra den dagens opptak, og dagen kommer frem under bildene: rommet og stedet, lydnivået i dB under fullt utslag (rapport 78), bevegelsesmengden fra telefonen, pulsen fra klokken, og det jeg selv skrev om lyden i dagboken. Lydstyrken er jevnet ut mellom de ni høyeste; det målte nivået står i tallene. De tre stilleste rommene, badstuen, det ekkofrie rommet og soverommet, var stillere enn opptakerens eget sus, så de spilles svakt: det som høres, er sus og en svak hendelse, skritt utenfor eller en stemme, og det er slik de var. Fra det ekkofrie rommet til garasjen med ventilasjonsanlegget er det over 50 dB, og kroppen sto omtrent like stille i begge. (Pek på to eller tre: det ekkofrie rommet, hytta med sauebjellen, garasjen.)</aside>
+  </section>
+  <section class="center-slide">
+    <img class="fig keep panel" src="images/ss365-159-klokke.png" alt="Spektrogram av et opptak der en klokke tikker i perioder, med bilde av rommet og klokken" style="max-height:72vh">
+    <aside class="notes">En klokke som tikket av og på. Et vanlig møterom med glassvegger og ventilasjonsdur. Det som fanget oppmerksomheten, var en klokke på veggen som bare tikket i perioder: tikkingen kom og gikk, kanskje fordi klokken en gang hadde falt i gulvet og visernes stilling var forskjøvet. Resultatet var en rytme i to lag, sekundtikket og en langsom puls av tikking og stillhet, synlig som de lyse feltene i spektrogrammet. Det er det nærmeste jeg kom en ytre klokke i løpet av året, og jeg ble stående og lytte til den.</aside>
+  </section>
+  <section class="center-slide">
+    <div style="display:flex;align-items:center;justify-content:center;gap:1.2em">
+      <img class="photo round" src="images/ss365-186.png" alt="360-graders bilde fra et leskur der personen står under et vepsebol" style="height:34vh;width:34vh;max-height:none;object-fit:contain;margin:0">
+      <img class="photo fragment" src="images/ss365-vepsebol.jpg" alt="Et vepsebol under et tak" style="height:34vh;width:auto;max-height:none;margin:0">
+      <canvas class="fragment" data-anim="wasp" data-speed="30" width="900" height="460" aria-label="Bevegelsen gjennom økten den dagen, jevn og litt over årets median hele tiden"></canvas>
+    </div>
+    <aside class="notes">Ti minutter under et vepsebol. Opplevelsen av ti minutter var svært ulik fra dag til dag. Her sto jeg i et leskur og oppdaget først etter at jeg hadde begynt, at det hang et vepsebol rett over hodet mitt. Jeg ble stående, med veps rundt hodet, og det var nervepirrende og fascinerende på samme tid. En annen dag var det mygg, og den økten føltes uutholdelig lang. Andre dager var ti minutter over før jeg visste ordet av det. Det jeg husker fra en økt, er nesten alltid forstyrrelsen. (Klikk.) Men kroppen? Kurven tegnes mens jeg snakker, 30 ganger raskere enn virkelig tid: bevegelsen fra telefonen på brystet den dagen, i vinduer på ti sekunder, og den stiplede linjen er årets median. Jeg beveget meg litt mer enn vanlig, mer enn på <span data-n="wasp_pct"></span> prosent av dagene, men jevnt hele tiden, uten topper der vepsene kom nær. Opplevelsen var dramatisk; kroppen var det ikke.</aside>
+  </section>
+  <section class="center-slide" data-depth="deeper">
+    <div class="layers" style="width:1500px">
+      <img src="images/fig-rommet-a.png" alt="Tom figur med fem mål på rommet: lydnivå, klang, lydhendelser, bevegelse og lys">
+      <img class="fragment" src="images/fig-rommet.png" alt="Alle fem ligger nær null: rommet henger ikke sammen med hvor mye jeg beveget meg">
+    </div>
+    <p class="kicker" style="margin:.8em 0 0">Kilde: StillStanding365</p>
+    <aside class="notes">Flytter rommet kroppen? Over <span data-n="y31_days"></span> dager med samme telefon sammenlignet jeg hvor mye jeg beveget meg, med fem mål på rommet den dagen, med dagen i året holdt fast. (Klikk.) Lydnivå, klang, hvor mye som skjer i lyden, og bevegelse og lys i bildet: ingen av dem holder etter korreksjon for mange tester. Lydnivået er nærmest, med <span data-n="y31_level"></span>. Et høyere, travlere og lysere rom ga ikke en urolig kropp. Det gjelder retningen også: lyden kom fra sin faste kant i rommet (retningsfasthet <span data-n="y33_sound_R"></span> av 1), jeg svaiet langs min faste akse, og de to har ingenting med hverandre å gjøre (r = <span data-n="y33_r"></span>). Aksen går til 0,5 i hver retning, så det er synlig hvor små sammenhengene er (rapport 31 og 33).</aside>
+  </section>
+  <section data-background-image="images/championship-floor.jpg" data-background-size="cover">
+    <div class="overlay"><p class="kicker" style="margin:0">2012–2024 · syv mesterskap</p><p style="margin:0">NM i stillstand</p></div>
+    <aside class="notes">Gulvet før et NM i stillstand i fourMs-laboratoriet. Publikum står så stille de kan i seks til åtte minutter, halvparten i stillhet og halvparten med musikk, med en markør på hodet. Seks mesterskap med motion capture og <span data-n="n38"></span> deltakere, og det syvende i 2024 med akselerometre på <span data-n="n_compete"></span> deltakere. Det er et offentlig eksperiment like mye som en konkurranse. Spørsmålet hvert år var om musikken får folk til å bevege seg når de prøver å la være.</aside>
+  </section>
+  <section class="center-slide">
+    <canvas data-anim="flock" width="1800" height="760" aria-label="Hodets bane for alle deltakerne i NM 2022, hver i sin rute, det første minuttet"></canvas>
+    <p class="caption" style="text-align:center">NM i stillstand <span data-n="head_year"></span> · én rute per deltaker</p>
+    <aside class="notes">Ett minutt, <span data-n="flock_n"></span> mennesker. Alle <span data-n="flock_n"></span> deltakerne i NM <span data-n="head_year"></span>, hvert hode sett ovenfra i sin egen rute, det første minuttet, i virkelig tid, filtrert til <span data-n="band"></span> Hz; streken nede til høyre er 1 cm. Etter <span data-n="music_on"></span> sekunder starter musikken, og strekene skifter farge. Se om dere kan se forskjell. Det kan ikke jeg heller, og det er poenget med de neste lysbildene. Tast L, så høres den samlede farten i salen som en sus; hør om den endrer seg når musikken starter. Noen få ruter har store utslag: det er folk som ennå flytter på seg i det første minuttet, og de er med som de er.</aside>
+  </section>
+  <section class="center-slide">
+    <div class="pair">
+      <img class="photo" src="images/championship-floor.jpg" alt="Gulvet før et NM i stillstand">
+      <div>
+        <p class="huge accent"><span data-n="lift"></span> %</p>
+        <p class="big fragment">musikk</p>
+      </div>
+    </div>
+    <aside class="notes">Over fem mesterskap og <span data-n="lift_n"></span> opptak beveger folk seg <span data-n="lift"></span> prosent mer med musikk enn i stillhet, innenfor båndet der kroppen svaier (p = <span data-n="lift_p"></span>). I 2022 alene beveget <span data-n="d_up"></span> av <span data-n="d_n"></span> seg mer med musikk, med en effektstørrelse på <span data-n="d"></span>. Det er ekte, og det er lite. Det opprinnelige spørsmålet var om musikk påvirker mikrobevegelsene, og svaret er: ikke mye, og ikke systematisk.</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <table class="cmp" style="max-width:1500px;margin:0 auto">
+      <tr><th colspan="2">NM i stillstand: musikk mot stillhet</th></tr>
+      <tr class="fragment"><td>Mer bevegelse med musikk</td><td><span data-n="lift"></span> %</td></tr>
+      <tr class="fragment"><td>Flere beveget seg mer (2022)</td><td><span data-n="d_up"></span> av <span data-n="d_n"></span></td></tr>
+      <tr class="fragment"><td>Mest opp og ned</td><td><span data-n="vert_low"></span> %</td></tr>
+      <tr class="fragment"><td>Stativene</td><td><span data-n="static_sway_vert"></span> %</td></tr>
+      <tr class="fragment"><td>Musikk som stiller</td><td><span data-n="n_still11"></span> av <span data-n="n_tracks11"></span></td></tr>
+    </table>
+    <aside class="notes">Det mesterskapene sier om musikk, samlet, én rad for hvert klikk. Over fem mesterskap og <span data-n="lift_n"></span> opptak beveger folk seg <span data-n="lift"></span> prosent mer med musikk enn i stillhet (p = <span data-n="lift_p"></span>). I 2022 beveget <span data-n="d_up"></span> av <span data-n="d_n"></span> seg mer med musikk. Det lille musikken legger til, er vertikalt: <span data-n="vert_low"></span> prosent ved 0,2 til 0,5 hertz og <span data-n="vert_sway"></span> ved 0,5 til 1 hertz, der kroppen flytter vekten; en liten fjæring i knærne mer enn at kroppen følger takten. Det er ikke rommet: stativene med referansemarkører går ned ved de samme frekvensene, <span data-n="static_sway_vert"></span> prosent, og vibrasjon i rommet kan bare legge til. Og av <span data-n="n_tracks11"></span> musikkstykker får <span data-n="n_still11"></span> folk til å stå stillere enn i sin egen stillhet. Alt dette er mange mennesker, én gang hver, i en sal. Neste lysbilde er det motsatte: få mennesker i et laboratorium (rapport 09, 10 og 11).</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <img class="photo" src="images/hpsp-belt.jpg" alt="En deltaker fester et pustebelte rundt brystet i laboratoriet, og beltet alene til høyre" style="max-height:74vh">
+    <p class="kicker" style="margin:.6em 0 0">2018 · Hodetelefoner eller høyttalere</p>
+    <aside class="notes">Fra salen til laboratoriet. I 2018 gjorde Agata Zelechowska et kontrollert eksperiment i fourMs-laben: de samme menneskene hørte den samme musikken to ganger, én gang i hodetelefoner og én gang fra høyttalere, med motion capture, et balansebrett under føttene og et pustebelte rundt brystet, som det på bildet. Neste lysbilde er hva det viste.</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <table class="cmp" style="max-width:1500px;margin:0 auto">
+      <tr><th colspan="2">Hodetelefoner eller høyttalere: <span data-n="hp_n"></span> personer i laben, to ganger hver</th></tr>
+      <tr class="fragment"><td>Bevegelse, hodetelefoner mot høyttalere</td><td><span data-n="hp_move"></span> % (p = <span data-n="hp_move_p"></span>)</td></tr>
+      <tr class="fragment"><td>Pusten med musikk</td><td><span data-n="hp_breath_up"></span> pust/min</td></tr>
+      <tr class="fragment"><td>Pusten, hodetelefoner mot høyttalere</td><td><span data-n="hp_dev_hp"></span> mot <span data-n="hp_dev_sp"></span> pust/min</td></tr>
+      <tr class="fragment"><td>Føttene og hodet svaier like langt</td><td>r = <span data-n="hp_feet"></span></td></tr>
+    </table>
+    <aside class="notes">Agata Zelechowskas kontrollerte eksperiment i 2018: de samme menneskene hørte den samme musikken to ganger, én gang i hodetelefoner og én gang fra høyttalere, med motion capture, pustebelte og balansebrett. De ble bare bedt om å stå og lytte. (Klikk for hver rad.) Hvordan lyden kom frem, betydde ingenting for bevegelsen: <span data-n="hp_move"></span> prosent, p = <span data-n="hp_move_p"></span>, over <span data-n="hp_move_n"></span> personer. Musikken endret pusten: <span data-n="hp_breath_up"></span> pust i minuttet når blokkene er like lange, over <span data-n="hp_breath_n"></span> personer (p = <span data-n="hp_breath_p"></span>). Men heller ikke pusten brydde seg om hodetelefoner eller høyttalere: <span data-n="hp_dev_hp"></span> mot <span data-n="hp_dev_sp"></span> (p = <span data-n="hp_dev_p"></span>). Og balansebrettet under føttene og markørene på hodet er enige: de som svaier langt med føttene, svaier langt med hodet, r = <span data-n="hp_feet"></span> over <span data-n="hp_feet_n"></span> personer. Fra salen til laben: musikken gjør lite med kroppen, og hvordan den spilles av, gjør ingenting (rapport 24, 29 og 83).</aside>
+  </section>
+</section>
+
+<!-- ===================== 3 RYTME ===================== -->
+<section>
+  <section class="center-slide">
+    <h1>Rytme</h1>
+    <aside class="notes">Så rytmen, og et spørsmål: i hvilken grad kan vi i det hele tatt snakke om rytme i disse signalene? Kroppen er full av prosesser på ulike tidsskalaer, men bare én av dem er en rytme i streng forstand, og det er hjertet. Kroppen tar ikke opp musikkens rytme; den eneste pulsen i signalet er dens egen.</aside>
+  </section>
+  <section class="center-slide">
+    <p class="big">«Repetisjon med variasjon»</p>
+    <aside class="notes">Hva er rytme? Fra bokens kapittel om kroppens rytmer. Et enkelt ord som alle kjenner og som er vanskelig å definere; i kjernen bygger rytme på gjentakelse, og aldri helt den samme: repetisjon med variasjon. En jevn puls, som en metronom, er den enkleste rytmen, men de fleste rytmer er mer sammensatte. Koukkari og Sothern definerer biologisk rytme som en endring som gjentas med et lignende mønster (2006), og Anne Danielsen beskriver musikalsk rytme som "a changing same" (2010). Både biologiske og musikalske rytmer er kontinuerlige signaler, ikke punkter i tid; perioden er tiden én syklus tar. Med de brillene ser vi nå på kroppen.</aside>
+  </section>
+  <section class="center-slide">
+    <canvas data-anim="clocks" width="1760" height="800" aria-label="Tre rullende kurver fra brystakselerometeret: åndedrag, svai og hjerteslag"></canvas>
+    <aside class="notes">Kroppen har mange klokker. Ett minutt av telefonen på brystet mitt, dag <span data-n="clock_day"></span> i 2023, i virkelig tid. Signalet er delt i tre bånd med grensene fra rapport 32: åndedraget, svaiet og hjerteslagene. Høyden er skalert per linje, så det er rytmen og ikke størrelsen som vises; hjertet er egentlig det største, og det kommer vi til. Tre klokker, tre tempoer, i den samme kroppen. Men se på dem med definisjonen fra forrige lysbilde: bare hjerteslaget er en rytme i streng forstand, med en tydelig topp i spekteret nesten hver dag. Pusten er der, men gir en tydelig topp bare på omtrent halvparten av dagene. Og svaiet ser bare ut som en bølge fordi signalet er filtrert til et smalt bånd; filtrerer man støy, svinger den. Svaiet har en tidsskala, men ingen periode: variasjon uten repetisjon. Tast L, så høres de: åndedraget som luft, et sus inn og et sus ut, sterkest der kurven endrer seg raskest, svaiet som en tone som gynger, hjertet som ett dunk per slag. Slagene er funnet i telefonsignalet selv, fra hjertets grunnfrekvens dette minuttet, og de er <span data-n="clock_beats"></span> på minuttet; pulsklokken viste <span data-n="clock_watch"></span>. Prikkene under hjertekurven er de samme slagene.</aside>
+  </section>
+  <section class="center-slide">
+    <div class="layers wide" style="margin:0 auto">
+      <img src="images/fig-klokker-0.png" alt="En logaritmisk tidsakse fra et halvt sekund til ti minutter">
+      <img class="fragment" src="images/fig-klokker-1.png" alt="Hjerteslag">
+      <img class="fragment" src="images/fig-klokker-2.png" alt="Vektforskyvning">
+      <img class="fragment" src="images/fig-klokker-3.png" alt="Åndedrag">
+      <img class="fragment" src="images/fig-klokker-4.png" alt="Kroppen faller til ro">
+      <img class="fragment" src="images/fig-klokker-5.png" alt="Hjertet faller til ro">
+      <img class="fragment" src="images/fig-klokker.png" alt="Én økt, ti minutter">
+    </div>
+    <aside class="notes">Fra under ett sekund til ti minutter, én klokke for hvert klikk. Når vi står stille, er kroppen full av rytmer. (Klikk.) Hjertet slår, i året mitt med en median på <span data-n="hr"></span> slag i minuttet, under ett sekund per slag. (Klikk.) Vekten flyttes frem og tilbake hvert til annet sekund. (Klikk.) Vi puster omtrent <span data-n="resp"></span> ganger i minuttet. Så de langsommere prosessene. (Klikk.) Bevegelsen faller til ro etter rundt <span data-n="settle_body"></span> sekunder, (klikk) hjertet først etter rundt <span data-n="settle_heart"></span>. (Klikk.) Og hele økten er ti minutter. Innenfor ti minutter ligger altså flere tidsskalaer, fra mikro til makro, og de går hver for seg.</aside>
+  </section>
+  <section>
+    <div class="layers" style="width:1500px">
+      <img class="fig keep" src="images/fig-matrise-0.svg" data-dark="images/fig-matrise-dark-0.svg" alt="Den romlig-tidslige matrisen: tid bortover og rom oppover, hver i mikro, meso og makro">
+      <img class="fig keep fragment" src="images/fig-matrise-1.svg" data-dark="images/fig-matrise-dark-1.svg" alt="Raden stillstanden lever i: mikro i rom, over alle tre nivåer i tid">
+      <img class="fig keep fragment" src="images/fig-matrise-2.svg" data-dark="images/fig-matrise-dark-2.svg" alt="Kroppens klokker i de tre rutene: hjerteslag og svai, pust og vektforskyvning, ti minutter og et år">
+    </div>
+    <aside class="notes">Tid og rom. Fra boken: en matrise med tid bortover og rom oppover, begge i tre nivåer. Meso er det vanlige: ord, fraser og hverdagshandlinger i tid, centimeterskalaen i rom. Mikro er det minste vi kan kontrollere og oppfatte, makro er det som går ut over korttidsminnet og kinesfæren. (Klikk.) Stillstanden lever i den nederste raden: millimeter i rom, men over hele tidsaksen. (Klikk.) Hjerteslag og svai under et halvt sekund, pust og vektforskyvning i sekunder, og så ti minutter og et helt år. Det er den raden vi nå zoomer inn på.</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <div class="layers" style="width:1500px">
+      <img src="images/fig-innhold-0.png" alt="Tom akse: andel av bevegelsen i prosent">
+      <img class="fragment" src="images/fig-innhold-1.png" alt="Åndedraget, loddrett: nesten ingenting">
+      <img class="fragment" src="images/fig-innhold-2.png" alt="Raskere enn 5 Hz, over båndet">
+      <img class="fragment" src="images/fig-innhold-3.png" alt="Hjerteslagets overtoner">
+      <img class="fragment" src="images/fig-innhold-4.png" alt="Langsom drift, under båndet">
+      <img class="fragment" src="images/fig-innhold-5.png" alt="Hjerteslag">
+      <img class="fragment" src="images/fig-innhold-6.png" alt="Vektforskyvning">
+      <img class="fragment" src="images/fig-innhold-7.png" alt="Den største delen: langsomt svai">
+    </div>
+    <aside class="notes">Pust, puls og svai i fem millimeter. De fem millimeterne i sekundet delt opp etter frekvens og retning, over <span data-n="n02"></span> opptak av hodet, nedenfra og opp, minste del først og største til slutt (klikk for hver): åndedraget loddrett, det som er raskere enn 5 Hz, hjerteslagets overtoner, langsom drift, hjerteslag, vektforskyvning og til slutt langsomt svai. Mest er langsomt svai: hodet svinger som en pendel på anklene. Så vektforskyvning, så hjerteslag: hjertet synes altså i hvordan hodet beveger seg. Det grønne er utenfor båndet vi måler i: langsom drift under og støy over. Til slutt åndedraget: pust og svai deler frekvensbånd og kan ikke skilles der, men de kan skilles på retning, for pusten løfter hodet mens svaiet svinger det, og det loddrette er nesten ingenting. Pusten sitter i brystet, ikke i hodet, og det er dit vi går nå.</aside>
+  </section>
+  <section class="center-slide" data-depth="deeper">
+    <div class="pair">
+      <img class="photo round" src="images/ss365-110.png" alt="360-graders bilde av en stående person i et lydisolert rom">
+      <div>
+        <p class="huge accent"><span data-n="cardiac_share"></span> %</p>
+        <p class="big fragment">av bevegelsen i brystet er hjerteslag</p>
+      </div>
+    </div>
+    <aside class="notes">Med en telefon på brystet hver dag i et år er hjertet det som dominerer: <span data-n="cardiac_share"></span> prosent av kraften i båndet, mot <span data-n="resp_share"></span> for pusten og <span data-n="post_share"></span> for svaiet. Hjertet bærer <span data-n="card_over_resp"></span> ganger så mye som pusten. Den som står stille, står og banker.</aside>
+  </section>
+  <section class="center-slide">
+    <img class="fig fragment" src="images/fig-takt.png" alt="Bevegelse ved taktfrekvensen med musikk mot stillhet for seks rytmer; alle under null" style="max-height:62vh">
+    <p class="kicker" style="margin:.8em 0 0">Kilde: NM i stillstand 2019</p>
+    <aside class="notes">Kroppen følger ikke takten. Hvis kroppen ble dratt med av rytmen, ville vi se mer bevegelse nøyaktig ved taktens frekvens. I 2019 hørte <span data-n="ei_n"></span> deltakere seks rytmer: en trommerytme, kompleks rytme, og en metronom, jevn puls, hver i 90, 120 og 140 slag i minuttet. (Klikk.) Hver søyle er én rytme. Vi måler hvor mye hodet beveger seg opp og ned akkurat ved taktens frekvens mens rytmen spiller, og sammenligner med den samme frekvensen i personens egne stille partier. Null betyr ingen forskjell; over null ville vært at kroppen fulgte takten. Den stiplede linjen er en økning på <span data-n="ei_det_pct"></span> prosent, det minste vi ville ha sett. I <span data-n="ei_up"></span> av <span data-n="ei_stim"></span> rytmer er det mer bevegelse ved takten. At alle søylene er under null, skal ikke leses for mye i: tre av dem er tydelig under, men uten noe mønster etter tempo eller type rytme, og det er det man får når sammenligningsgrunnlaget, de stille partiene, er støyete. Funnet er at det ikke finnes noen økning, ikke at folk holder seg unna takten (rapport 46).</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <div class="pair">
+      <img class="photo round" src="images/ss365-192.png" alt="360-graders bilde av en stående person i en kirke">
+      <div>
+        <p class="huge accent"><span data-n="peak_bpm"></span></p>
+        <p class="big fragment">slag i minuttet: den eneste pulsen i bevegelsen er hjertet</p>
+      </div>
+    </div>
+    <aside class="notes">Mesterskapet i 2019 rapporterte en topp i bevegelsen ved 120 slag i minuttet, og den ble lest som en resonans med musikken. Leser vi spekteret, ligger toppen ved en median på <span data-n="peak_hz"></span> hertz, det vil si <span data-n="peak_bpm"></span> slag i minuttet, uansett hva som spilles. Den eneste rytmen i en stående kropp er dens egen puls.</aside>
+  </section>
+</section>
+
+<!-- ===================== 4 TID ===================== -->
+<section>
+  <section class="center-slide">
+    <h1>Tid</h1>
+    <aside class="notes">Til slutt tiden: hva alt dette sier om tid slik vi lever den, og svaret på spørsmålet fra starten.</aside>
+  </section>
+  <section data-background-image="images/sverm-2012-performers.jpg" data-background-size="cover">
+    <div class="overlay"><p class="kicker" style="margin:0">2011–2021 · Sverm</p><p style="margin:0">Ti minutter, om og om igjen</p></div>
+    <aside class="notes">Det begynte i 2010 med et enkelt spørsmål: får musikk folk til å bevege seg? Måten å finne det ut på var å be folk om å ikke bevege seg, og måle det som var igjen. Fra 2011 sto vi tre stille sammen i laboratoriet, i ti minutter om gangen, gang etter gang, i det kunstneriske prosjektet Sverm, sammen med danseren Kari Anne Vadstensvik Bjerkestrand og fiolinisten Victoria Johnson. Vi målte bevegelsene med motion capture og skrev ned hva vi la merke til etter hver økt. Stillstand ble både metoden og det vi studerte. Bildet er fra en Sverm-forestilling i 2012.</aside>
+  </section>
+  <section data-background-image="images/lab-2012.jpg" data-background-size="cover">
+    <div class="overlay"><p class="quoteover">"Var det virkelig ti minutter?"</p></div>
+    <aside class="notes">Etter den første økten så vi på hverandre og lurte på om noe hadde gått galt. "Var det virkelig ti minutter?" spurte Kari Anne. Vi sjekket opptaket, og det var det. Bortsett fra noen lange minutter i starten hadde tiden gått fort. Senere glemte jeg en gang å sette på timeren, og Kari Anne sa at nå føltes det som om ti minutter hadde gått. Hun bommet bare med noen sekunder. Vi utviklet en ganske presis følelse for hvor lenge ti minutter er, så lenge vi sto i det samme rommet. Bildet er laboratoriet i 2012.</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <h2>Kroppen er stille lenge før den er i ro</h2>
+    <div class="layers wide" style="margin:0 auto">
+      <img src="images/fig-faller-til-ro-a.png" alt="Ett punkt per dag: når bevegelsen falt til ro, med medianen markert">
+      <img class="fragment" src="images/fig-faller-til-ro.png" alt="Det samme, med når hjertet falt til ro; åpne punkter er dager der det ikke rakk det">
+    </div>
+    <aside class="notes">Hvor lenge tar det før kroppen har roet seg etter at jeg stilte meg opp? Hver prikk er én dag i året. Den grønne raden er når bevegelsen hadde falt til ro, altså sluttet å avta. (Klikk.) Den lilla raden er det samme for pulsen: når den sluttet å synke. Prikkene helt til høyre er dager der pulsen ennå ikke var i ro da opptaket stoppet etter åtte minutter, så de ville ha ligget enda lenger ut. Over <span data-n="settle_days"></span> dager i mitt år med stillstand faller bevegelsen til ro etter en median på <span data-n="settle_body"></span> sekunder, mens hjertet trenger <span data-n="settle_heart"></span>, <span data-n="settle_ratio"></span> ganger så lang tid. På <span data-n="settle_cens"></span> prosent av dagene hadde hjertet ennå ikke falt til ro da opptaket stoppet. Pulsen faller med en median på <span data-n="hr_drop"></span> slag i minuttet. Kroppen er stille lenge før den er i ro.</aside>
+  </section>
+  <section>
+    <p class="kicker">Tre slags tid</p>
+    <div class="layers wide" style="margin:0 auto">
+      <img class="fig keep" src="images/fig-tider-0.svg" data-dark="images/fig-tider-dark-0.svg" alt="Klokketid: en urskive. Ti minutter er alltid ti minutter">
+      <img class="fig keep fragment" src="images/fig-tider-1.svg" data-dark="images/fig-tider-dark-1.svg" alt="Kroppstid, lik klokketiden: en kropp med et hjerte. Bevegelse, pust og puls hoper seg jevnt opp">
+      <img class="fig keep fragment" src="images/fig-tider-2.svg" data-dark="images/fig-tider-dark-2.svg" alt="Opplevd tid, ulik de to andre: et hode med en bølgende tanke. Noen ganger for fort, noen ganger uutholdelig langsomt">
+      <img class="fig keep fragment" src="images/fig-tider-3.svg" data-dark="images/fig-tider-dark-3.svg" alt="Fagene over hver tid: fysikk og teknologi over klokketiden, fysiologi over kroppstiden, psykologi og fenomenologi over den opplevde tiden. Under dem en bro mellom alle fagene">
+    </div>
+    <aside class="notes">Dette er det jeg sitter igjen med etter femten år. Klokketiden er den vi kan stille inn: ti minutter er ti minutter. Kroppens tid er overraskende lik: bevegelsen hoper seg opp som en rett linje, pusten og pulsen går sine egne veier, og et år med øving endrer ikke tallet. Den opplevde tiden følger ingen av dem. Ti minutter kan gå alt for fort eller ulidelig langsomt, avhengig av rommet, av hva som skjer der, og av hva man tenker på. Opplevd tid samsvarer i liten grad med klokketid eller med kroppens biologiske prosesser. (Klikk.) Hver tid har sine fag: klokketiden hører til fysikken og teknologien, kroppens tid til fysiologien og kinesiologien, den opplevde tiden til psykologien og fenomenologien. Hvert fag svarer godt på sitt, og ingen av dem svarer på hvor lenge ti minutter er. Derfor prøver jeg å bygge bro mellom alle. Dagen i dag har gitt oss klokkens tid, kroppens klokker og øyeblikket; hos en som står stille, finnes alle tre samtidig, og de går ikke i takt.</aside>
+  </section>
+  <section class="center-slide" data-depth="more">
+    <h2>Vi kjenner vår egen stillhet, litt</h2>
+    <div class="pair">
+      <div class="fragment"><p class="huge accent"><span data-n="rho_felt"></span></p><p class="big">følte at de beveget seg</p></div>
+      <div class="fragment"><p class="huge purple"><span data-n="rho_tiresome"></span></p><p class="big">syntes det var slitsomt</p></div>
+    </div>
+    <aside class="notes">Spørreskjemaene i mesterskapene: av <span data-n="n03_items"></span> spørsmål er det det folk la merke til om seg selv, som henger sammen med hvor mye de faktisk beveget seg. De som følte at de hadde beveget seg, hadde gjort det (rangkorrelasjon <span data-n="rho_felt"></span>, <span data-n="n_felt"></span> deltakere). De som syntes det var slitsomt eller vanskelig, beveget seg også mer (<span data-n="rho_tiresome"></span>, <span data-n="n_tiresome"></span> deltakere). Hvor mye musikk de hører på til vanlig, betyr ingenting (<span data-n="rho_listen"></span>). Sammenhengene er svake: vi kjenner vår egen stillhet litt, men ikke mye. Spørreskjemaene spurte ikke om hvordan tiden gikk; det jeg sier om opplevd varighet, bygger på egne erfaringer og dagbøkene fra Sverm.</aside>
+  </section>
+  <section data-depth="more" data-background-image="images/lab-2012.jpg" data-background-size="cover">
+    <div class="overlay"><p class="kicker" style="margin:0">Sverm</p><p style="margin:0">Med en oppgave i hodet gikk tiden fortere</p></div>
+    <aside class="notes">I Sverm prøvde vi ulike mentale oppgaver mens vi sto stille: meditasjon, telling og lignende. Bevegelsen endret seg ikke målbart. Men alle tre opplevde at en oppgave fikk de ti minuttene til å gå fortere, og vi likte de øktene bedre. Det samme tallet, ulike minutter. Litteraturen skiller mellom å bedømme varighet og å oppleve at tiden går, og meditasjonsstudier tyder på at en endret kroppsbevissthet endrer opplevelsen av indre tid; det kjenner jeg meg igjen i.</aside>
+  </section>
+  <section class="center-slide">
+    <p class="kicker">Hvor lenge er 10 minutter?</p>
+    <img class="photo" src="images/ss365-wide.jpg" alt="Et par sko på et korkgulv, sett ovenfra" style="max-height:44vh">
+    <p class="big fragment">Like lenge for kroppen.</p>
+    <p class="big fragment">Ulikt for den som står der.</p>
+    <aside class="notes">Tilbake til spørsmålet. For klokken og for kroppen er ti minutter forbausende like lange: rundt fem millimeter i sekundet, som hoper seg jevnt opp, i ti år og i 365 rom. For den som står der, er de aldri like lange. Og husk minuttet dere sto i starten: klokken gikk likt for alle, kroppene sto omtrent like stille, men minuttet var ikke like langt for noen av dere. Stillstand gjør det synlig, fordi den tar bort nesten alt annet. Så hva er tid? For en kropp som står stille, er det minst tre ting, og det er forskjellen mellom dem som er interessant.</aside>
+  </section>
+</section>
+
+<!-- ===================== 5 AVSLUTNING ===================== -->
+<section>
+  <section class="center-slide corners">
+    <img class="photo keep" src="images/fig-omslag.svg" alt="Omslaget til boken Still Standing: skoene fra året med 365 dager, tittel, undertittel og forfatter" style="max-height:66vh">
+    <p class="big" style="margin-top:.3em">Takk</p>
+    <p><a href="https://www.arj.no/" target="_blank" rel="noopener">arj.no</a></p>
+    <img class="corner-logo" src="images/uio-seal.svg" alt="Universitetet i Oslo" style="left:0">
+    <img class="corner-logo" src="images/fourms-logo.png" alt="fourMs-laben" style="left:150px">
+    <img class="corner-logo" src="images/mishmash-tile-purple.svg" alt="MishMash" style="left:330px;padding:0">
+    <img class="corner-logo" src="images/ritmo-emblem.svg" alt="RITMO" style="left:480px">
+    <img class="corner-logo rcn" src="images/rcn-funded-by.svg" alt="Finansiert av Norges forskningsråd">
+    <aside class="notes">Takk. Dataene ligger i Oslo Standstill Database på Zenodo, og boken Still Standing er snart ferdig. Nede til venstre er dem jeg står på skuldrene til: Universitetet i Oslo, fourMs-laben, MishMash og RITMO; til høyre Forskningsrådet, som har finansiert det meste. Spørsmål.</aside>
+  </section>
+  <section data-depth="more">
+    <div class="layers" style="width:1600px">
+      <img class="fig keep" src="images/fig-samskaping-0.svg" data-dark="images/fig-samskaping-dark-0.svg" alt="Alexander og en KI-agent">
+      <img class="fig keep fragment" src="images/fig-samskaping-1.svg" data-dark="images/fig-samskaping-dark-1.svg" alt="Første runde: idé og kilder, første utkast">
+      <img class="fig keep fragment" src="images/fig-samskaping-2.svg" data-dark="images/fig-samskaping-dark-2.svg" alt="Andre runde: kommentarer, ny versjon">
+      <img class="fig keep fragment" src="images/fig-samskaping-3.svg" data-dark="images/fig-samskaping-dark-3.svg" alt="Tredje runde: flere kommentarer, ny versjon">
+      <img class="fig keep fragment" src="images/fig-samskaping-4.svg" data-dark="images/fig-samskaping-dark-4.svg" alt="Lysbildene i midten; ansvaret er mitt">
+    </div>
+    <aside class="notes">Full åpenhet: slik ble innlegget laget. Jeg la programmet og sammendraget i en mappe og ga en KI-agent idéen og kildene mine: manuskriptet til Still Standing og de nummererte analyserapportene bak det. (Klikk.) Den laget et første utkast, med figurene tegnet fra rapportenes data. (Klikk.) Jeg kommenterte, og den laget en ny versjon. (Klikk.) Og så igjen, mange ganger, hver runde litt strammere. (Klikk.) Resultatet er lysbildene, og ansvaret for påstandene er mitt. Ingen tall er skrevet inn for hånd: alle tall på lysbildene og i notatene leses fra rapportene av skriptet som tegner figurene, så en endret rapport endrer lysbildet. Det er ikke å trykke på én knapp, men en iterativ prosess, litt som å øve inn et stykke musikk.</aside>
+  </section>
+</section>
+
+</div>
+</div>
+<div class="footer">Symposium om tid · Det Norske Videnskaps-Akademi · 16. november 2026</div>
+<div id="depth" aria-hidden="true"></div>
+<div id="sound" aria-live="polite"></div>
+<script src="images/numbers.js"></script>
+<script src="images/vepsebol.js"></script>
+<script src="images/traces.js"></script>
+<script>
+  // Fyll alle data-n-felt fra numbers.js (tools/make_figures.py) og meta i traces.js (tools/make_traces.py).
+  document.querySelectorAll('[data-n]').forEach(function (el) {
+    var k = el.getAttribute('data-n'), v = window.NUMBERS && window.NUMBERS[k];
+    if (v === undefined && window.TRACES) v = window.TRACES.meta[k];
+    el.textContent = v === undefined ? '[mangler ' + el.getAttribute('data-n') + ']' : v;
+  });
+</script>
+<script src="lib/reveal/reveal.js"></script>
+<script src="lib/reveal-plugin/notes/notes.js"></script>
+<script src="images/atlas.js"></script>
+<script src="lib/standstill.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    width: 1920, height: 1080, margin: 0.04,
+    minScale: 0.2, maxScale: 2.5,
+    slideNumber: false,
+    navigationMode: 'default',
+    transition: 'fade',
+    controlsTutorial: false,
+    preloadIframes: false,
+    fragments: !/[?&]fragments=false\b/.test(location.search),
+    plugins: [ RevealNotes ]
+  });
+  Standstill.init(Reveal);
+</script>
+<script src="lib/atlas.js"></script>
+<script>
+
+  // Figurer med en egen mørk versjon (data-dark) bytter fil i stedet for å inverteres.
+  function swapImages() {
+    var dark = document.documentElement.classList.contains('dark');
+    document.querySelectorAll('img[data-dark]').forEach(function (im) {
+      if (!im.dataset.light) im.dataset.light = im.getAttribute('src');
+      im.src = dark ? im.dataset.dark : im.dataset.light;
+    });
+  }
+  swapImages();
+  function setTheme(dark) {
+    document.documentElement.classList.toggle('dark', dark);
+    swapImages();
+    try { localStorage.setItem('tid-nva-theme', dark ? 'dark' : 'light'); } catch (e) {}
+    document.dispatchEvent(new Event('themechange'));
+  }
+  function toggleTheme() { setTheme(!document.documentElement.classList.contains('dark')); }
+  document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+  Reveal.addKeyBinding({ keyCode: 68, key: 'D', description: 'Lys/mørk modus' }, toggleTheme);
+  // Bunntekst og dybdeetikett skjules på fotografier; etiketten leser data-depth, og et lysbilde uten er grunnleggende.
+  var DEPTH = { basics: 'grunnleggende', more: 'mer', deeper: 'dypere' };
+  function onSlide(ev) {
+    var sl = ev.currentSlide || Reveal.getCurrentSlide();
+    var surface = !!(sl && (sl.hasAttribute('data-background-color') || sl.hasAttribute('data-background-image') || sl.classList.contains('corners')));   // corners: emblemene tar hjørnene
+    document.body.classList.toggle('on-surface', surface);
+    document.getElementById('depth').textContent = sl ? DEPTH[sl.getAttribute('data-depth') || 'basics'] : '';
+  }
+  Reveal.on('ready', onSlide); Reveal.on('slidechanged', onSlide);
+</script>
+</body>
+</html>
